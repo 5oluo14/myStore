@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">{{ __('admin.clients') }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $dataCounts['clients'] }}</h6>
+                                    {{-- <h6 class="font-extrabold mb-0">{{ $dataCounts['clients'] }}</h6> --}}
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">{{ __('admin.services') }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $dataCounts['services'] }}</h6>
+                                    {{-- <h6 class="font-extrabold mb-0">{{ $dataCounts['services'] }}</h6> --}}
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">{{ __('admin.products') }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $dataCounts['products'] }}</h6>
+                                    {{-- <h6 class="font-extrabold mb-0">{{ $dataCounts['products'] }}</h6> --}}
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">{{ __('admin.orders') }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $dataCounts['orders'] }}</h6>
+                                    {{-- <h6 class="font-extrabold mb-0">{{ $dataCounts['orders'] }}</h6> --}}
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">{{ __('admin.bookings') }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $dataCounts['bookings'] }}</h6>
+                                    {{-- <h6 class="font-extrabold mb-0">{{ $dataCounts['bookings'] }}</h6> --}}
                                 </div>
                             </div>
                         </div>

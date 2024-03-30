@@ -23,9 +23,6 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                        <a href="#"><img src="{{ asset('dashboard/compiled/svg/logo.svg') }}" alt="Logo"></a>
-                    </div>
                     <h1 class="auth-title">{{ __('admin.login') }}</h1>
                     <p class="auth-subtitle mb-5"></p>
 
@@ -33,7 +30,7 @@
                         {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input name="email" type="text" class="form-control form-control-xl"
-                                placeholder="{{ __('admin.email') }}">
+                                placeholder="البريد الالكتروني">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
@@ -53,7 +50,8 @@
                             @enderror
                         </div>
                         <div class="form-check form-check-lg d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" name="remember" value="" id="flexCheckDefault">
+                            <input class="form-check-input me-2" type="checkbox" name="remember" value=""
+                                id="flexCheckDefault">
                             <label class="form-check-label text-gray-600" for="flexCheckDefault">
                                 {{ __('admin.keep_me_login') }}
                             </label>

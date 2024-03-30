@@ -21,14 +21,10 @@
         </li>
         <li>
             @if (app()->getLocale() == 'en')
-                <a class="dropdown-item"
-                    href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i
-                        class="icon-mid bi bi-person me-2"></i> ar
+                <a class="dropdown-item" {{-- href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i --}} class="icon-mid bi bi-person me-2"></i> ar
                 </a>
             @else
-                <a class="dropdown-item"
-                    href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i
-                        class="icon-mid bi bi-person me-2"></i> en
+                <a class="dropdown-item" {{-- href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i --}} class="icon-mid bi bi-person me-2"></i> en
                 </a>
             @endif
 
