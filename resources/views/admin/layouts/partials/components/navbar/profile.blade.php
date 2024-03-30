@@ -16,18 +16,8 @@
         <li>
             <a class="dropdown-item" href="{{ route('admin.profile.view') }}">
                 <i class="icon-mid bi bi-person me-2"></i>
-                My Profile
+                حسابي
             </a>
-        </li>
-        <li>
-            @if (app()->getLocale() == 'en')
-                <a class="dropdown-item" {{-- href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i --}} class="icon-mid bi bi-person me-2"></i> ar
-                </a>
-            @else
-                <a class="dropdown-item" {{-- href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i --}} class="icon-mid bi bi-person me-2"></i> en
-                </a>
-            @endif
-
         </li>
         <li>
             <hr class="dropdown-divider">
@@ -35,7 +25,7 @@
         <li>
             <a class="dropdown-item" href="{{ route('admin.logout') }}">
                 <i class="icon-mid bi bi-box-arrow-left me-2"></i>
-                Logout
+                تسجيل الخروج
             </a>
         </li>
     </ul>
