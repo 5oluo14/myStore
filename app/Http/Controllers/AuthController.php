@@ -41,9 +41,5 @@ class AuthController extends Controller
         return back();
     }
 
-    public function home()
-    {
-        return view('admin.home.index');
-    }
 }
 

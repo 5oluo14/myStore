@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,8 @@ Route::group(['middleware' => ['guest:web']], function () {
 
 
 Route::group(['middleware' => ['auth:web']], function () {
-    Route::get('/', [AuthController::class, 'home'])->name('home');
-    Route::get('home', [AuthController::class, 'home'])->name('home');
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('home', [HomeController::class, 'home'])->name('home');
     Route::get('admin-logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::resource('vendors', VendorController::class);
 
