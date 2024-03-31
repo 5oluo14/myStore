@@ -1,6 +1,6 @@
 <span class="btn btn-{{ $button_color }} block" data-bs-toggle="modal" data-bs-target="#{{ $record_name }}"
     style="cursor: pointer;">
-    {{ __('admin.' . $record_name) }} <i class="bi bi-eye"></i>
+    {{ __($record_name) }} <i class="bi bi-eye"></i>
 </span>
 
 <div class="modal fade text-left modal-borderless" id="{{ $record_name }}" tabindex="-1" aria-labelledby="myModalLabel1"
@@ -28,7 +28,7 @@
                                         @foreach ($show_record as $filter)
                                             <div class="col-md-2">
                                                 <label
-                                                    for="first-name-horizontal-icon">{{ __('admin.' . $filter['name']) }}</label>
+                                                    for="first-name-horizontal-icon">{{ __($filter['name']) }}</label>
                                             </div>
                                             <div class="col-md-10">
                                                 {{ call_user_func_array([App\Base\Helper\Field::class, $filter['type']], array_pad([$filter['name'], $filter['label'], isset($filter['options']) ? $filter['options'] : null], 5, null)) }}

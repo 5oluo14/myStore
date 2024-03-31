@@ -1,5 +1,5 @@
-<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __('admin.' . $name) }}_wrap">
-    <label class="mb-1" for="{{ $name }}">{{ __('admin.' . $label) }}</label>
+<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __($name) }}_wrap">
+    <label class="mb-1" for="{{ $name }}">{{ __($label) }}</label>
     <div class="form-check">
         <div class="checkbox row" id="{{ $name }}">
             @foreach ($options as $key => $value)

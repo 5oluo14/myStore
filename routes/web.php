@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::get('/', [AuthController::class, 'home'])->name('home');
     Route::get('home', [AuthController::class, 'home'])->name('home');
     Route::get('admin-logout', [AuthController::class, 'logout'])->name('admin.logout');
+    Route::resource('vendors', VendorController::class);
 
 });
 
@@ -39,7 +41,6 @@ Route::resource('admins', 'AdminController');
 Route::resource('roles', 'RoleController');
 Route::resource('categories', 'CategoryController');
 Route::resource('sliders', 'SliderController');
-Route::resource('vendors', 'VendorController');
 Route::resource('clients', 'ClientController');
 Route::resource('policies', 'PolicyController');
 

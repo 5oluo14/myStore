@@ -4,8 +4,8 @@
         href={{ asset('dashboard/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') }}>
     <link rel="stylesheet" href={{ asset('dashboard/extensions/toastify-js/src/toastify.css') }}>
 @endpush
-<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __('admin.' . $name) }}_wrap">
-    <label class="mb-1" for="{{ $name }}">{{ __('admin.' . $label) }}</label>
+<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __($name) }}_wrap">
+    <label class="mb-1" for="{{ $name }}">{{ __($label) }}</label>
     <input type="file" class="basic-filepond" name="{{ $name }}" {{ $required }}>
     <span class="help-block"><strong id="{{ $name }}_error">{{ $errors->first($name) }}</strong></span>
 </div>

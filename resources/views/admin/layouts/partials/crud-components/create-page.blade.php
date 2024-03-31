@@ -1,5 +1,5 @@
 @extends('admin.layouts.master', [
-    'page_header' => __('admin.create'),
+    'page_header' => __('اضافة جديد'),
 ])
 @section('content')
     {{-- <section class="section"> --}}
@@ -14,9 +14,8 @@
                         <hr />
                         <div class="col-12 d-flex justify-content-start">
                             <button type="submit" id="submitBtn" onclick="disableButton()"
-                                class="btn btn-primary me-1 mb-1">{{ __('admin.submit') }}</button>
-                            <button type="reset"
-                                class="btn btn-light-secondary me-1 mb-1">{{ __('admin.reset') }}</button>
+                                class="btn btn-primary me-1 mb-1">{{ __('حفظ') }}</button>
+                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">{{ __('تفريغ') }}</button>
                         </div>
                     </form>
                 </div>
@@ -32,7 +31,7 @@
             // Get a reference to the button element
             var submitBtn = document.getElementById('submitBtn');
             var form = document.getElementById('create-form');
-            
+
             // Set the disabled attribute to true to disable the button
             submitBtn.disabled = true;
             form.submit();

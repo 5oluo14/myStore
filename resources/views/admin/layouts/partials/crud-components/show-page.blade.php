@@ -1,5 +1,5 @@
 @extends('admin.layouts.master', [
-    'page_header' => __('admin.show'),
+    'page_header' => __('عرض'),
 ])
 @section('content')
     <section class="section">
@@ -19,4 +19,3 @@
         </div>
     </section>
 @stop
-

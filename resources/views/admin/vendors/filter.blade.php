@@ -3,10 +3,31 @@
     'filters' => [
         [
             'type' => 'text',
-            'name' => 'filter[name]',
-            'label' => 'name',
+            'name' => 'vendor',
+            'label' => 'الاسم',
             'required' => 'false',
-            'placeholder' => 'name',
-        ]
+            'placeholder' => 'الاسم',
+        ],
+        [
+            'type' => 'email',
+            'name' => 'email',
+            'label' => 'البريد الالكتروني',
+            'required' => 'false',
+            'placeholder' => 'البريد الالكتروني',
+        ],
+        [
+            'type' => 'number',
+            'name' => 'phone',
+            'label' => 'رقم الهاتف',
+            'required' => 'false',
+            'placeholder' => 'رقم الهاتف',
+        ],
+        [
+            'type' => 'text',
+            'name' => 'name',
+            'label' => 'العنوان',
+            'required' => 'false',
+            'placeholder' => 'العنوان',
+        ],
     ],
 ])

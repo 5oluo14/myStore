@@ -2,11 +2,10 @@
     <link rel="stylesheet" href="{{ asset('dashboard/extensions/flatpickr/flatpickr.min.css') }}">
 @endpush
 
-<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __('admin.' . $name) }}_wrap">
-    <label class="mb-1" for="{{ $name }}">{{ __('admin.' . $label) }}</label>
+<div class="form-group {{ $errors->has($name) ? 'has-error' : '' }}" id="{{ __($name) }}_wrap">
+    <label class="mb-1" for="{{ $name }}">{{ __($label) }}</label>
     <input name="{{ $name }}" type="text" class="form-control flatpickr-input"
-        placeholder="{{ $placeholder ? __('admin.' . $placeholder) : __('admin.' . $label) }}"
-        id="flatpickr-date">
+        placeholder="{{ $placeholder ? __($placeholder) : __($label) }}" id="flatpickr-date">
     <span class="help-block"><strong id="{{ $name }}_error">{{ $errors->first($name) }}</strong></span>
 </div>
 
