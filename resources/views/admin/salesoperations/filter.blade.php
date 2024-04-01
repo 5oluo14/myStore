@@ -3,7 +3,7 @@
     'filters' => [
         [
             'type' => 'text',
-            'name' => 'client',
+            'name' => 'vendor',
             'label' => 'الاسم',
             'required' => 'false',
             'placeholder' => 'الاسم',
@@ -24,10 +24,10 @@
         ],
         [
             'type' => 'text',
-            'name' => 'address',
+            'name' => 'name',
             'label' => 'العنوان',
             'required' => 'false',
             'placeholder' => 'العنوان',
         ],
-        ]
+    ],
 ])

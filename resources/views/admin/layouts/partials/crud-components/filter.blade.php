@@ -25,7 +25,6 @@
                             <div class="card-body">
                                 <div class="row">
                                     @foreach ($filters as $filter)
-                                        {{-- @dd($filter) --}}
                                         <div class="col-md-3 col-12">
                                             {{ call_user_func_array([App\Helper\Field::class, $filter['type']], array_pad([$filter['name'], $filter['label'], isset($filter['options']) ? $filter['options'] : null], 5, null)) }}
                                         </div>

@@ -1,5 +1,5 @@
 @extends('admin.layouts.partials.crud-components.table', [
-    'page_header' => __('admin.clients'),
+    'page_header' => __('العملاء'),
 ])
 
 @section('filter')
@@ -9,12 +9,15 @@
 @stop
 
 @section('table')
+ @if (!empty($records) && count($records) > 0)
     <thead>
         <tr>
             <th>{{ __('#') }}</th>
-            <th>{{ __('admin.name') }}</th>
-            <th>{{ __('admin.phone') }}</th>
-            <th style="width: 1px">{{ __('admin.actions') }}</th>
+            <th>{{ __('الاسم') }}</th>
+            <th>{{ __('البريد الالكتروني') }}</th>
+            <th>{{ __('رقم الهاتف') }}</th>
+            <th>{{ __('العنوان') }}</th>
+            <th style="width: 1px">{{ __('الاجراءت') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +25,9 @@
             <tr id="removable{{ $record->id }}">
                 <td>{{ $record->id }}</td>
                 <td>{{ $record->name }}</td>
+                <td>{{ $record->email }}</td>
                 <td>{{ $record->phone }}</td>
+                <td>{{ $record->address }}</td>
                 <td style="">
                     <div style="display:flex; gap:2px; justify-content:center;">
                         {{-- <a href="{{ route($show_route, $record->id) }}">
@@ -41,5 +46,11 @@
             </tr>
         @endforeach
     </tbody>
+    @else
+        <div>
+            <h3 class="page-heading pt-5" style="text-align: center"> لا توجد بيانات للعرض !!</h3>
+        </div>
+    @endif
+
 
 @stop
