@@ -37,9 +37,8 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::resource('vendors', VendorController::class);
     Route::resource('clients', ClientController::class);
     Route::resource('admins', AdminController::class);
-
-    // Route::resource('clients', SalesOperationController::class);
-    
+    Route::get('profile', [AuthController::class, 'updateProfileView'])->name('admin.profile.view');
+    Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');
 });
 
 
@@ -69,5 +68,3 @@ Route::resource('delivery-plans', 'DeliveryPlanController');
 Route::resource('orders', 'OrderController');
 Route::resource('bookings', 'BookingController');
 
-Route::get('profile', [AuthController::class, 'updateProfileView'])->name('admin.profile.view');
-Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');

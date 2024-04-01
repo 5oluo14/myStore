@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
 
 class AuthController extends Controller
 {
@@ -41,5 +44,28 @@ class AuthController extends Controller
         return back();
     }
 
+    public function updateProfileView()
+    {
+        $update_route = 'profile.post';
+        $record = auth()->user();
+        return view('admin.profile.edit', compact('update_route', 'record'));
+    }
+
+    public function updateProfile(ProfileRequest $request)
+    {
+        $user = Auth::user();
+        $user->update(Arr::except($request->validated(), ['old_password', 'new_password']));
+
+        if ($request->input('old_password')) {
+            if (Hash::check($request->input('old_password'), $user->password)) {
+                $user->password = $request->input('new_password');
+                $user->save();
+            } else {
+                return redirect()->back()->with('fail', 'حدث خطأ !');
+            }
+        }
+
+        return redirect()->route('home')->with('success', 'تم التعديل بنجاح');
+    }
 }
 
