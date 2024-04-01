@@ -15,7 +15,7 @@
                             <hr />
                             <div class="col-12 d-flex justify-content-start">
                                 <button type="submit" id="submitBtn" onclick="disableButton()"
-                                    class="btn btn-primary me-1 mb-1">{{ __('حغظ') }}</button>
+                                    class="btn btn-primary me-1 mb-1">{{ __('حفظ') }}</button>
                                 <button type="reset"
                                     class="btn btn-light-secondary me-1 mb-1">{{ __('تفريغ') }}</button>
                             </div>

@@ -3,24 +3,18 @@
     'filters' => [
         [
             'type' => 'text',
-            'name' => 'filter[name]',
-            'label' => 'name',
+            'name' => 'admin',
+            'label' => 'الاسم',
             'required' => 'false',
-            'placeholder' => 'name',
+            'placeholder' => 'الاسم',
         ],
         [
             'type' => 'email',
-            'name' => 'filter[email]',
-            'label' => 'email',
+            'name' => 'email',
+            'label' => 'البريد الالكتروني',
             'required' => 'false',
-            'placeholder' => 'email',
+            'placeholder' => 'البريد الالكتروني',
         ],
-        [
-            'type' => 'number',
-            'name' => 'filter[phone]',
-            'label' => 'phone',
-            'required' => 'false',
-            'placeholder' => 'phone',
-        ],
+
     ],
 ])

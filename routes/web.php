@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SalesOperationController;
 use App\Http\Controllers\HomeController;
 
@@ -35,6 +36,8 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::get('admin-logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::resource('vendors', VendorController::class);
     Route::resource('clients', ClientController::class);
+    Route::resource('admins', AdminController::class);
+
     // Route::resource('clients', SalesOperationController::class);
     
 });
@@ -42,7 +45,6 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 
 
-Route::resource('admins', 'AdminController');
 Route::resource('roles', 'RoleController');
 Route::resource('categories', 'CategoryController');
 Route::resource('sliders', 'SliderController');
