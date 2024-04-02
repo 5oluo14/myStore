@@ -28,7 +28,7 @@
 
 <li class="sidebar-item">
     <a href="{{ route('categories.index') }}" class='sidebar-link'>
-        <i class="bi bi-person-gear"></i>
+        <i class="bi bi-shop"></i>
         <span>{{ __('الأقسام') }}</span>
     </a>
 </li>
