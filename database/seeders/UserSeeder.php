@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Client;
 use App\Models\Vendor;
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -24,6 +27,23 @@ class UserSeeder extends Seeder
             'email' => 'vendor@vendor.com',
             'phone' => '01030302010',
             'address' => 'شارع احمد ماهر',
+        ]);
+        Client::create([
+            'name' => 'عميل ',
+            'email' => 'client@client.com',
+            'phone' => '01030302010',
+            'address' => 'شارع احمد ماهر',
+        ]);
+        Category::create([
+            'name' => 'تصنيف'
+        ]);
+        Product::create([
+            'name' => 'منتج',
+            'description' => 'وصف المنتج الاول تيسيت 123123123',
+            'quantity' => '100',
+            'price' => '255',
+            'vendor_id' => 1,
+            'category_id' => 1,
         ]);
     }
 }

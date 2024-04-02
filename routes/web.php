@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\VendorController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::get('profile', [AuthController::class, 'updateProfileView'])->name('admin.profile.view');
     Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');
     Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+
 
 });
 
@@ -51,7 +54,6 @@ Route::resource('sliders', 'SliderController');
 Route::resource('policies', 'PolicyController');
 
 
-Route::resource('products', 'ProductController');
 
 Route::get('admins/toggle-boolean/{id}/{action}', 'AdminController@toggleBoolean')->name('admins.toggleBoolean');
 Route::get('services/toggle-boolean/{id}/{action}', 'ServiceController@toggleBoolean')->name('services.toggleBoolean');

@@ -32,3 +32,10 @@
         <span>{{ __('الأقسام') }}</span>
     </a>
 </li>
+
+<li class="sidebar-item">
+    <a href="{{ route('products.index') }}" class='sidebar-link'>
+        <i class="bi bi-basket"></i>
+        <span>{{ __('المنتجات') }}</span>
+    </a>
+</li>

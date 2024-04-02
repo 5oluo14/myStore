@@ -1,24 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index () {
+    public function index()
+    {
         $records = Category::when(request('category'), function ($q) {
             $q->where('name', 'like', '%' . request('Category') . '%');
         })
-        ->orderBy('id', 'desc')
-        ->paginate(10);
+            ->when(request('from_date'), function ($q) {
+                $q->where('created_at', '>=', request('from_date'))
+                    ->where('created_at', '<=', request('to_date'));
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         $edit_route = 'categories.edit';
         $create_route = 'categories.create';
         $destroy_route = 'categories.destroy';
         return view('admin.categories.index', compact('records', 'create_route', 'edit_route', 'destroy_route'));
     }
-    
+
     public function create()
     {
         $store_route = 'categories.store';
@@ -47,7 +53,8 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', __('تم التعديل بنجاح'));
     }
 
-    public function destroy (Category $category) {
+    public function destroy(Category $category)
+    {
         $id = $category->id;
         $category->delete();
         return response()->json([
