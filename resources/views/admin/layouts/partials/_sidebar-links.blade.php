@@ -25,3 +25,10 @@
         <span>{{ __('المدراء') }}</span>
     </a>
 </li>
+
+<li class="sidebar-item">
+    <a href="{{ route('categories.index') }}" class='sidebar-link'>
+        <i class="bi bi-person-gear"></i>
+        <span>{{ __('الأقسام') }}</span>
+    </a>
+</li>

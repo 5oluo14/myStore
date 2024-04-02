@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SalesOperationController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -39,13 +39,14 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::resource('admins', AdminController::class);
     Route::get('profile', [AuthController::class, 'updateProfileView'])->name('admin.profile.view');
     Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');
+    Route::resource('categories', CategoryController::class);
+
 });
 
 
 
 
 Route::resource('roles', 'RoleController');
-Route::resource('categories', 'CategoryController');
 Route::resource('sliders', 'SliderController');
 Route::resource('policies', 'PolicyController');
 
