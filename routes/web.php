@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -42,7 +43,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
-
+    Route::resource('orders', OrderController::class);
 
 });
 
@@ -68,6 +69,5 @@ Route::resource('client-addresses', 'ClientAddressController');
 Route::resource('brands', 'BrandController');
 Route::resource('services', 'ServiceController');
 Route::resource('delivery-plans', 'DeliveryPlanController');
-Route::resource('orders', 'OrderController');
 Route::resource('bookings', 'BookingController');
 

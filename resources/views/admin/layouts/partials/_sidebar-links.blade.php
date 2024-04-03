@@ -39,3 +39,10 @@
         <span>{{ __('المنتجات') }}</span>
     </a>
 </li>
+
+<li class="sidebar-item">
+    <a href="{{ route('orders.index') }}" class='sidebar-link'>
+        <i class="bi bi-bag"></i>
+        <span>{{ __('عمليات البيع') }}</span>
+    </a>
+</li>

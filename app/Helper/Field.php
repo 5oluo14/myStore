@@ -89,9 +89,9 @@ class Field
      * @param $label
      * @return string
      */
-    public static function number($name, $label, $value = null, $required = 'true', $placeholder = null, $disabled = false)
+    public static function number($name, $label, $value = null, $required = 'true', $placeholder = null, $disabled = false, $min = null)
     {
-        return view('admin.layouts.partials.form-fields.number', compact('name', 'label', 'value', 'required', 'placeholder', 'disabled'));
+        return view('admin.layouts.partials.form-fields.number', compact('name', 'label', 'value', 'required', 'placeholder', 'disabled','min'));
     }
 
     /**
