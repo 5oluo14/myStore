@@ -18,7 +18,8 @@
                 <th>{{ __('الوصف') }}</th>
                 <th>{{ __('التصنيف') }}</th>
                 <th>{{ __('المورد') }}</th>
-                <th>{{ __('السعر') }}</th>
+                <th>{{ __('سعر الشراء') }}</th>
+                <th>{{ __('سعر البيع') }}</th>
                 <th>{{ __('الكمية المتاحة') }}</th>
                 <th>{{ __('الكمية المباعة') }}</th>
                 <th>{{ __('تاريخ الانشاء') }}</th>
@@ -33,7 +34,8 @@
                     <td>{{ $record->description }}</td>
                     <td>{{ $record->category->name }}</td>
                     <td>{{ $record->vendor->name }}</td>
-                    <td>{{ $record->price }}</td>
+                    <td>{{ $record->buying_price }}</td>
+                    <td>{{ $record->selling_price }}</td>
                     <td>{{ $record->quantity }}</td>
                     <td>{{ $record->saled_quantity }}</td>
                     <td>{{ $record->created_at?->format('Y-m-d') }}</td>

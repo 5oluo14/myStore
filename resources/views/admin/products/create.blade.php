@@ -7,7 +7,8 @@
 @section('form')
     {{ \App\Helper\Field::text(name: 'name', label: 'الاسم', required: 'true', placeholder: 'الاسم') }}
     {{ \App\Helper\Field::text(name: 'description', label: 'الوصف', required: 'true', placeholder: 'الوصف') }}
-    {{ \App\Helper\Field::number(name: 'price', label: 'السعر', required: 'true', placeholder: 'السعر') }}
+    {{ \App\Helper\Field::number(name: 'buying_price', label: 'سعر الشراء', required: 'true', placeholder: ' سعر الشراء') }}
+    {{ \App\Helper\Field::number(name: 'selling_price', label: 'سعر البيع', required: 'true', placeholder: ' سعر البيع') }}
     {{ \App\Helper\Field::number(name: 'quantity', label: 'الكمية', required: 'true', placeholder: 'الكمية') }}
     {{ \App\Helper\Field::selectWithSearch(name: 'category_id', label: 'القسم', required: 'true', placeholder: 'القسم', options: $categories) }}
     {{ \App\Helper\Field::selectWithSearch(name: 'vendor_id', label: 'المورد', required: 'true', placeholder: 'المورد', options: $vendors) }}

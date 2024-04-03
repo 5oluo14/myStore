@@ -41,7 +41,8 @@ class UserSeeder extends Seeder
             'name' => 'منتج',
             'description' => 'وصف المنتج الاول تيسيت 123123123',
             'quantity' => '100',
-            'price' => '255',
+            'buying_price' => '250',
+            'selling_price' => '300',
             'vendor_id' => 1,
             'category_id' => 1,
         ]);

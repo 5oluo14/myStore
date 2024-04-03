@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->string('description');
             $table->integer('quantity');
             $table->integer('saled_quantity')->default(0);
-            $table->float('price');
+            $table->float('selling_price');
+            $table->float('buying_price');
             $table->timestamps();
         });
     }
