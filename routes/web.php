@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.post');
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+    Route::put('products/{product}/add-quantity', [ProductController::class, 'addQuantity'])->name('products.add-quantity');
     Route::resource('orders', OrderController::class);
 
 });

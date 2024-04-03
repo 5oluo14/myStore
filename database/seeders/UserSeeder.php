@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BuyingProduct;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Vendor;
@@ -45,6 +46,12 @@ class UserSeeder extends Seeder
             'selling_price' => '300',
             'vendor_id' => 1,
             'category_id' => 1,
+        ]);
+
+        BuyingProduct::create([
+            'product_id' => 1,
+            'price' => 250,
+            'quantity' => 100
         ]);
     }
 }

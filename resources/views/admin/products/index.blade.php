@@ -23,6 +23,7 @@
                 <th>{{ __('الكمية المتاحة') }}</th>
                 <th>{{ __('الكمية المباعة') }}</th>
                 <th>{{ __('تاريخ الانشاء') }}</th>
+                <th>{{ __('اضافة كمية') }} </th>
                 <th style="width: 1px">{{ __('الاجراءات') }}</th>
             </tr>
         </thead>
@@ -39,6 +40,50 @@
                     <td>{{ $record->quantity }}</td>
                     <td>{{ $record->saled_quantity }}</td>
                     <td>{{ $record->created_at?->format('Y-m-d') }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-bag-plus-fill"></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> اضافة كمية</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                         <form class="form" id="edit-form" method="POST" action="{{ route('products.add-quantity', $record->id) }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            {{ \App\Helper\Field::number(name: 'quantity', label: 'الكمية', required: 'true', placeholder: 'الكمية') }}     
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">الغاء</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                        </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                    <!-- Button trigger modal -->
+
+
+
+
+
+
+
+
+
                     <td style="">
                         <div style="display:flex; gap:2px; justify-content:center;">
                             <a href="{{ route($edit_route, $record->id) }}">

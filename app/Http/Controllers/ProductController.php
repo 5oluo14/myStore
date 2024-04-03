@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use DB;
 
 class ProductController extends Controller
 {
@@ -51,7 +52,19 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->validated();
-        Product::create($data);
+        DB::beginTransaction();
+        try {
+            $product = Product::create($data);
+            $product->buyingProducts()->create([
+                'product_id' => $product->id,
+                'quantity' => $data['quantity'],
+                'price' => $data['buying_price'],
+            ]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('products.index')->with('fail', __('حدث خطأ، الرجاء المحاولة مره اخرى'));
+        }
         return redirect()->route('products.index')->with('success', __('تم الاضافة بنجاح'));
     }
 
@@ -85,5 +98,29 @@ class ProductController extends Controller
             'message' => __('تم الحذف بنجاح'),
             'id' => $id
         ]);
+    }
+
+    public function addQuantity(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+
+        DB::beginTransaction();
+        try {
+            $product->update([
+                'quantity' => $product->quantity + $request->quantity
+            ]);
+            $product->buyingProducts()->create([
+                'product_id' => $product->id,
+                'quantity' => $request->quantity,
+                'price' => $product->buying_price,
+            ]);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('products.index')->with('fail', __('حدث خطأ، الرجاء المحاولة مره اخرى'));
+        }
+
+        return redirect()->route('products.index')->with('success', 'تم اضافة الكمية بنجاح');
     }
 }
