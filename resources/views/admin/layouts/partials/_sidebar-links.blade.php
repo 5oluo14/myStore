@@ -42,7 +42,13 @@
 
 <li class="sidebar-item">
     <a href="{{ route('orders.index') }}" class='sidebar-link'>
-        <i class="bi bi-bag"></i>
+        <i class="bi bi-cart-x"></i>
         <span>{{ __('عمليات البيع') }}</span>
+    </a>
+</li>
+<li class="sidebar-item">
+    <a href="{{ route('buying-products.index') }}" class='sidebar-link'>
+        <i class="bi bi-cart-check"></i>
+        <span>{{ __('عمليات الشراء') }}</span>
     </a>
 </li>

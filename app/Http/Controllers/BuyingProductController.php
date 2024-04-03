@@ -12,54 +12,18 @@ class BuyingProductController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(BuyingProduct $buyingProduct)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(BuyingProduct $buyingProduct)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, BuyingProduct $buyingProduct)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BuyingProduct $buyingProduct)
-    {
-        //
+        $records = BuyingProduct::when(request('from_date'), function ($q) {
+            $q->where('created_at', '>=', request('from_date'))
+                ->where('created_at', '<=', request('to_date'));
+        })
+            ->when(request('product'), function ($q) {
+                $q->whereHas('product', function ($query) {
+                    $query->where('name', 'like', '%' . request('product') . '%');
+                });
+            })
+            ->with(['product.vendor', 'product'])
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('admin.buying_products.index', compact('records'));
     }
 }

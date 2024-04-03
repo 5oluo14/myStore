@@ -60,7 +60,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
-                                            {{ \App\Helper\Field::number(name: 'quantity', label: 'الكمية', required: 'true', placeholder: 'الكمية') }}     
+                                            {{ \App\Helper\Field::number(name: 'quantity', label: 'الكمية', required: 'true', placeholder: 'الكمية',min: 1) }}     
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
