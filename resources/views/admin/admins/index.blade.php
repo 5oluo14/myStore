@@ -1,5 +1,5 @@
 @extends('admin.layouts.partials.crud-components.table', [
-    'page_header' => __('المدراء'),
+    'page_header' => __('الموظفين'),
 ])
 
 @section('filter')

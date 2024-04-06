@@ -27,8 +27,13 @@ class AdminRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'salary' => ['required', 'float'],
+            'work_hours' => ['required', 'float'],
             'password' => ['confirmed', 'min:6', Rule::requiredIf(function(){
                 return request()->route()->methods == 'post';
+                
             })],
 
         ];

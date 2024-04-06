@@ -20,6 +20,22 @@ class AdminController extends Controller
                 $q->where('email', 'like', '%' . request('email') . '%');
             })
 
+            ->when(request('phone'), function ($q) {
+                $q->where('phone', 'like', '%' . request('phone') . '%');
+            })
+
+            ->when(request('address'), function ($q) {
+                $q->where('address', 'like', '%' . request('address') . '%');
+            }) 
+
+            ->when(request('salary'), function ($q) {
+                $q->where('salary', 'like', '%' . request('salary') . '%');
+            })
+
+            ->when(request('work_hours'), function ($q) {
+                $q->where('work_hours', 'like', '%' . request('work_hours') . '%');
+            })
+
             ->orderBy('id', 'desc')
             ->paginate(10);
         $create_route = 'admins.create';

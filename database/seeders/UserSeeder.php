@@ -21,6 +21,10 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('123'),
+            'phone' => '01020223033',
+            'address' => 'حي الجامعه',
+            'salary' => '2500',
+            'work_hours' => '6',
         ]);
 
         Vendor::create([

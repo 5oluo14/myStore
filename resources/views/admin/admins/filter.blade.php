@@ -15,6 +15,33 @@
             'required' => 'false',
             'placeholder' => 'البريد الالكتروني',
         ],
-
-    ],
+        [
+            'type' => 'number',
+            'name' => 'phone',
+            'label' => 'رقم الموبيل',
+            'required' => 'false',
+            'placeholder' => 'رقم الموبيل',
+        ],
+        [
+            'type' => 'text',
+            'name' => 'address',
+            'label' => 'العنوان',
+            'required' => 'false',
+            'placeholder' => 'العنوان',
+        ],
+        [
+            'type' => 'text',
+            'name' => 'salary',
+            'label' => 'المرتب',
+            'required' => 'false',
+            'placeholder' => 'المرتب',
+        ],
+        [
+            'type' => 'text',
+            'name' => 'work_hours',
+            'label' => 'ساعات العمل',
+            'required' => 'false',
+            'placeholder' => 'ساعات العمل',
+        ],
+    ]
 ])
