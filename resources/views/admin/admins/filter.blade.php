@@ -18,9 +18,9 @@
         [
             'type' => 'number',
             'name' => 'phone',
-            'label' => 'رقم الموبيل',
+            'label' => 'رقم الهاتف',
             'required' => 'false',
-            'placeholder' => 'رقم الموبيل',
+            'placeholder' => 'رقم الهاتف',
         ],
         [
             'type' => 'text',
@@ -30,18 +30,18 @@
             'placeholder' => 'العنوان',
         ],
         [
-            'type' => 'text',
+            'type' => 'number',
             'name' => 'salary',
             'label' => 'المرتب',
             'required' => 'false',
             'placeholder' => 'المرتب',
         ],
         [
-            'type' => 'text',
+            'type' => 'number',
             'name' => 'work_hours',
             'label' => 'ساعات العمل',
             'required' => 'false',
             'placeholder' => 'ساعات العمل',
         ],
-    ]
+    ],
 ])

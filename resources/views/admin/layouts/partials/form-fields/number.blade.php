@@ -3,7 +3,7 @@
     <input type="number" class="form-control" id="{{ $name }}" name={{ $name }}
         placeholder="{{ $placeholder ? __($placeholder) : __($label) }}" spellcheck="false" data-ms-editor="true"
         {{ $required == 'true' ? 'required' : '' }} value="{{ $value == null ? old($name) : $value }}"
-        {{ $disabled == true ? 'disabled' : '' }} {{ $min != null ? 'min=' . $min : '' }}>
+        {{ $disabled == true ? 'disabled' : '' }} {{ $min != null ? 'min=' . $min : 'min=0s' }}>
 
     <span class="help-block"><strong id="{{ $name }}_error">{{ $errors->first($name) }}</strong></span>
 
