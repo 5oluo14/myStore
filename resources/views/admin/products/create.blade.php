@@ -10,6 +10,7 @@
     {{ \App\Helper\Field::number(name: 'buying_price', label: 'سعر الشراء', required: 'true', placeholder: ' سعر الشراء') }}
     {{ \App\Helper\Field::number(name: 'selling_price', label: 'سعر البيع', required: 'true', placeholder: ' سعر البيع') }}
     {{ \App\Helper\Field::number(name: 'quantity', label: 'الكمية', required: 'true', placeholder: 'الكمية') }}
+    {{ \App\Helper\Field::number(name: 'min_quantity', label: 'الحد الادنى من الكمية', required: 'true', placeholder: 'الحد الادنى من الكمية') }}
     {{ \App\Helper\Field::selectWithSearch(name: 'category_id', label: 'القسم', required: 'true', placeholder: 'القسم', options: $categories) }}
     {{ \App\Helper\Field::selectWithSearch(name: 'vendor_id', label: 'المورد', required: 'true', placeholder: 'المورد', options: $vendors) }}
 @stop

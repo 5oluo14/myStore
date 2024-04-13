@@ -9,6 +9,7 @@ use App\Models\Vendor;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\BuyingProduct;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
         $dataCounts['products'] = Product::count();
         $dataCounts['orders'] = Order::count();
         $dataCounts['buying_Products'] = BuyingProduct::count();
-        return view('admin.home.index', compact('dataCounts'));
+        $products = Product::where('quantity', '<=', DB::raw('min_quantity'))->select('quantity', 'name')->pluck('quantity', 'name');
+        return view('admin.home.index', compact('dataCounts', 'products'));
     }
 }

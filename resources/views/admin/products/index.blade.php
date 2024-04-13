@@ -22,8 +22,9 @@
                 <th>{{ __('سعر البيع') }}</th>
                 <th>{{ __('الكمية المتاحة') }}</th>
                 <th>{{ __('الكمية المباعة') }}</th>
+                <th>{{ __('الحد الادنى من الكمية') }}</th>
                 <th>{{ __('تاريخ الانشاء') }}</th>
-                <th>{{ __('اضافة كمية') }} </th>
+                {{-- <th>{{ __('اضافة كمية') }} </th> --}}
                 <th style="width: 1px">{{ __('الاجراءات') }}</th>
             </tr>
         </thead>
@@ -39,8 +40,9 @@
                     <td>{{ $record->selling_price }}</td>
                     <td>{{ $record->quantity }}</td>
                     <td>{{ $record->saled_quantity }}</td>
+                    <td>{{ $record->min_quantity }}</td>
                     <td>{{ $record->created_at?->format('Y-m-d') }}</td>
-                    <td>
+                    {{-- <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi bi-bag-plus-fill"></i>
                         </button>
@@ -73,7 +75,7 @@
                             </div>
                         </div>
 
-                    </td>
+                    </td> --}}
                     <!-- Button trigger modal -->
 
 

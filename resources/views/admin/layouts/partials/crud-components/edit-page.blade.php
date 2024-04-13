@@ -3,6 +3,11 @@
 ])
 @section('content')
     <section class="section">
+        <div class="col-12 d-flex justify-content-end">
+            <input action="action" onclick="window.history.go(-1); return false;" type="submit" value="العودة"
+                class="btn btn-light-success me-1 mb-1" />
+            </a>
+        </div>
         <div class="row" id="table-hover-row">
             <div class="col-12">
                 <div class="card p-3">

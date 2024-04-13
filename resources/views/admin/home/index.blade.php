@@ -3,6 +3,18 @@
 ])
 
 @section('content')
+
+    @if ($products->count() > 0)
+        <div class="alert alert-danger" role="alert">
+            لديك منتجات اوشكت على النفاذ :
+            <ul>
+                @foreach ($products as $key => $value)
+                    <li><a href="{{ route('products.index',['product'=> $key]) }}">{{ $key }} : {{ $value }}</a></li>
+                @endforeach
+            </ul>
+
+        </div>
+    @endif
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="row">
