@@ -34,4 +34,8 @@ class Product extends Model
     {
         return $this->hasMany(BuyingProduct::class);
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Product::class)->using(OrderProduct::class);
+    }
 }

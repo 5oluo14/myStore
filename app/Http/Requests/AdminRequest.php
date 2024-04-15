@@ -29,11 +29,10 @@ class AdminRequest extends FormRequest
             'email' => ['required', 'email'],
             'phone' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'salary' => ['required', 'float'],
-            'work_hours' => ['required', 'float'],
-            'password' => ['confirmed', 'min:6', Rule::requiredIf(function(){
+            'salary' => ['required', 'integer'],
+            'work_hours' => ['required', 'integer'],
+            'password' => ['confirmed', 'min:6', Rule::requiredIf(function () {
                 return request()->route()->methods == 'post';
-                
             })],
 
         ];

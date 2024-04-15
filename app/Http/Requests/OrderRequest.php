@@ -21,13 +21,14 @@ class OrderRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd(request()->all());
         return [
-            'quantity' => ['required', 'integer'],
+            // 'quantity' => ['required', 'integer'],
             // 'price' => ['required', 'integer'],
             // 'total_price' => ['required', 'integer'],
             'client_id' => ['required', 'integer', 'exists:clients,id'],
-            'product_id' => ['required', 'integer', 'exists:products,id'],
-            
+            'productList' => ['required', 'string'],
+
         ];
     }
 }

@@ -22,11 +22,11 @@ class OrderController extends Controller
                 });
             })
             ->when(request('product'), function ($q) {
-                $q->whereHas('product', function ($query) {
+                $q->whereHas('products', function ($query) {
                     $query->where('name', 'like', '%' . request('product') . '%');
                 });
             })
-            ->with(['client', 'product'])
+            ->with(['client', 'products'])
             ->orderBy('id', 'desc')
             ->paginate(10);
 
@@ -45,30 +45,46 @@ class OrderController extends Controller
     {
 
         $data = $request->validated();
-        $product = Product::findOrFail($data['product_id']);
-        if ($data['quantity'] > $product->quantity) {
-            return back()->withInput()->withErrors(['quantity' => 'الكمية المدخلة اكبر من الموجوده في المخزن']);
+        $order_data = [
+            'total_profit' => 0,
+            'total_quantity' => 0,
+            'total_price' => 0,
+            'client_id' => $data['client_id']
+        ];
+        $items_data = [];
+        foreach (json_decode($data['productList']) as $item) {
+            $product = Product::findOrFail($item->product_id);
+            if ($product->quantity > $product->quantity) {
+                return back()->withInput()->withErrors(['quantity' => 'الكمية المدخلة اكبر من الموجوده في المخزن']);
+            }
+
+            //data for item
+            $product_item = [];
+            $product_item['product_id'] = $item->product_id;
+            $product_item['quantity'] = $item->quantity;
+            $product_item['price'] = $product->selling_price;
+            $product_item['profit'] = $product->selling_price - $product->buying_price;
+
+            $product->update([
+                'quantity' => $product->quantity - $item->quantity,
+                'saled_quantity' => $product->saled_quantity + $item->quantity,
+            ]);
+
+            array_push($items_data, $product_item);
+            //data for order
+            $order_data['total_quantity'] += $item->quantity;
+            $order_data['total_profit'] += ($product->selling_price - $product->buying_price) * $item->quantity;
+            $order_data['total_price'] += $product->selling_price * $item->quantity;
         }
-        //compute profit, and be sure the total price and every feilds is true
-        $data['price'] = $product->selling_price;
-        $data['profit'] = ($product->selling_price - $product->buying_price) * $data['quantity'];
-        $data['total_price'] = $product->selling_price * $data['quantity'];
-        //use db transaction to be sure all quereies executed together
         DB::beginTransaction();
         try {
-            Order::create($data);
-            //increase product saled quantity and decrease quantity
-            $product->update([
-                'quantity' => $product->quantity - $data['quantity'],
-                'saled_quantity' => $product->saled_quantity + $data['quantity'],
-            ]);
+            $order = Order::create($order_data);
+            $order->products()->sync($items_data);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('orders.index')->with('fail', __('حدث خطأ، الرجاء المحاولة مره اخرى'));
         }
-
-
         return redirect()->route('orders.index')->with('success', __('تم الاضافة بنجاح'));
     }
 
@@ -79,39 +95,39 @@ class OrderController extends Controller
         return view('admin.orders.edit', compact('update_route', 'record'));
     }
 
-    public function update(OrderRequest $request, Order $order)
-    {
-        $data = $request->validated();
-        $product = Product::findOrFail($data['product_id']);
+    // public function update(OrderRequest $request, Order $order)
+    // {
+    //     $data = $request->validated();
+    //     $product = Product::findOrFail($data['product_id']);
 
-        if ($order->quantity == $data['quantity']) {
-            $product_new_quantity = 0;
-        }else {
+    //     if ($order->quantity == $data['quantity']) {
+    //         $product_new_quantity = 0;
+    //     } else {
 
-            if (($data['quantity'] - $order->quantity) > $product->quantity) {
-                return back()->withInput()->withErrors(['quantity' => 'الكمية المدخلة اكبر من الموجوده في المخزن']);
-            }
-            $product_new_quantity = $data['quantity'] - $order->quantity;
-            $data['profit'] = ($order->profit / $order->quantity) * $data['quantity'];
-            $data['total_price'] = $order->price * $data['quantity'];
-        }
-        DB::beginTransaction();
-        try {
-            $order->update($data);
-            
-            if ($product_new_quantity != 0) {
-                $product->update([
-                    'quantity' => $product->quantity - $product_new_quantity,
-                    'saled_quantity' => $product->saled_quantity + $product_new_quantity,
-                ]);
-            }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->route('orders.index')->with('fail', __('حدث خطأ، الرجاء المحاولة مره اخرى'));
-        }
-        //increase product saled quantity and decrease quantity
+    //         if (($data['quantity'] - $order->quantity) > $product->quantity) {
+    //             return back()->withInput()->withErrors(['quantity' => 'الكمية المدخلة اكبر من الموجوده في المخزن']);
+    //         }
+    //         $product_new_quantity = $data['quantity'] - $order->quantity;
+    //         $data['profit'] = ($order->profit / $order->quantity) * $data['quantity'];
+    //         $data['total_price'] = $order->price * $data['quantity'];
+    //     }
+    //     DB::beginTransaction();
+    //     try {
+    //         $order->update($data);
 
-        return redirect()->route('orders.index')->with('success', __('تم التعديل بنجاح'));
-    }
+    //         if ($product_new_quantity != 0) {
+    //             $product->update([
+    //                 'quantity' => $product->quantity - $product_new_quantity,
+    //                 'saled_quantity' => $product->saled_quantity + $product_new_quantity,
+    //             ]);
+    //         }
+    //         DB::commit();
+    //     } catch (\Exception $e) {
+    //         DB::rollback();
+    //         return redirect()->route('orders.index')->with('fail', __('حدث خطأ، الرجاء المحاولة مره اخرى'));
+    //     }
+    //     //increase product saled quantity and decrease quantity
+
+    //     return redirect()->route('orders.index')->with('success', __('تم التعديل بنجاح'));
+    // }
 }

@@ -77,15 +77,6 @@
 
                     </td> --}}
                     <!-- Button trigger modal -->
-
-
-
-
-
-
-
-
-
                     <td style="">
                         <div style="display:flex; gap:2px; justify-content:center;">
                             <a href="{{ route($edit_route, $record->id) }}">

@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index (){
+    public function index()
+    {
         $records = User::when(request('from_date'), function ($q) {
             $q->where('created_at', '>=', request('from_date'))
                 ->where('created_at', '<=', request('to_date'));
@@ -26,7 +28,7 @@ class AdminController extends Controller
 
             ->when(request('address'), function ($q) {
                 $q->where('address', 'like', '%' . request('address') . '%');
-            }) 
+            })
 
             ->when(request('salary'), function ($q) {
                 $q->where('salary', 'like', '%' . request('salary') . '%');
@@ -35,23 +37,24 @@ class AdminController extends Controller
             ->when(request('work_hours'), function ($q) {
                 $q->where('work_hours', 'like', '%' . request('work_hours') . '%');
             })
-
+            ->with('salaries')
             ->orderBy('id', 'desc')
             ->paginate(10);
         $create_route = 'admins.create';
         return view('admin.admins.index', compact('records', 'create_route'));
     }
 
-    public function create () {
+    public function create()
+    {
         $store_route = 'admins.store';
         return view('admin.admins.create', compact('store_route'));
     }
 
-    public function store (AdminRequest $request){
+    public function store(AdminRequest $request)
+    {
         $data = $request->validated();
         $admin = User::create($data);
         return redirect()->route('admins.index')->with('success', __('تم الاضافة بنجاح'));
-
     }
 
     public function edit($id)
@@ -59,7 +62,7 @@ class AdminController extends Controller
         // $edit_route = [];
         $record = User::findOrFail($id);
         $update_route = 'admins.update';
-        return view('admin.admins.edit', compact('update_route', 'record' ));
+        return view('admin.admins.edit', compact('update_route', 'record'));
     }
 
     public function update(AdminRequest $request, $id)
