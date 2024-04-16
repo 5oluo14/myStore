@@ -11,6 +11,7 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BuyingProductController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::put('products/{product}/add-quantity', [ProductController::class, 'addQuantity'])->name('products.add-quantity');
     Route::resource('orders', OrderController::class);
     Route::get('buying-products', [BuyingProductController::class, 'index'])->name('buying-products.index');
+    Route::get('reports/ProductReports', [ReportController::class, 'productStockReport'])->name('admins.ProductReports');
+
+
 });
