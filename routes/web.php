@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth:web']], function () {
     Route::put('products/{product}/add-quantity', [ProductController::class, 'addQuantity'])->name('products.add-quantity');
     Route::resource('orders', OrderController::class);
     Route::get('buying-products', [BuyingProductController::class, 'index'])->name('buying-products.index');
-    Route::get('reports/ProductReports', [ReportController::class, 'productStockReport'])->name('admins.ProductReports');
-
+    Route::get('reports/ProductReports', [ReportController::class, 'productStockReport'])->name('reports.products');
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 
 });

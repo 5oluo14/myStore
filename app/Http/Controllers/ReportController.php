@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 class ReportController extends Controller
 {
+
+    public function index(){
+        return view('admin.reports.index');
+    }
     public function productStockReport()
     {
         $records = Product::when(request('from_date'), function ($q) {

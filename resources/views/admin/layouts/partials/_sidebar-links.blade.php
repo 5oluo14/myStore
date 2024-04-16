@@ -46,10 +46,12 @@
         <span>{{ __('عمليات البيع') }}</span>
     </a>
 </li>
+
 <li class="sidebar-item">
-    <a href="{{ route('buying-products.index') }}" class='sidebar-link'>
-        <i class="bi bi-cart-check"></i>
-        <span>{{ __('عمليات الشراء') }}</span>
+    <a href="{{ route('reports.index') }}" class='sidebar-link'>
+        <i class="bi  bi-file-bar-graph"></i>
+
+        <span>{{ __('التقارير') }}</span>
     </a>
 </li>
 
