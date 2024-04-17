@@ -49,25 +49,18 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">الاسم</th>
                                         <th scope="col">الكمية</th>
-                                        <th scope="col">الربح</th>
-                                        <th scope="col">سعر المنتج</th>
-                                        <!-- <th scope="col">الاجمالي</th> -->
+                                        <th scope="col">الربح الاجمالي</th>
+                                        <th scope="col">الاجمالي</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($record->orders as $order)
                                     <tr>
                                         <th scope="row">{{$order?->id}}</th>
-
-                                        <td>{{ $order->id}}</td>
                                         <td>{{ $order->total_quantity}}</td>
                                         <td>{{ $order->total_profit}}</td>
                                         <td>{{ $order->total_price}}</td>
-
-
-
                                     </tr>
                                     @endforeach
                                 </tbody>
