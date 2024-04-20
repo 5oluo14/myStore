@@ -19,7 +19,9 @@
         <th>{{ __('العنوان') }}</th>
         <th>{{ __('المرتب') }}</th>
         <th>{{ __('عدد ساعات العمل') }}</th>
+        @if(auth()->id() ==1)
         <th>{{ __('دفع المرتب') }}</th>
+        @endif
         <th>{{ __('تاريخ الانشاء') }}</th>
         @if (auth()->id() == 1)
         <th style="width: 1px">{{ __('الاجرائات') }}</th>
@@ -36,6 +38,7 @@
         <td>{{ $record->address }}</td>
         <td>{{ $record->salary }}</td>
         <td>{{ $record->work_hours }}</td>
+        @if(auth()->id() ==1)
         <td>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $record->id }}">
                 <i class="bi bi-bag-plus-fill"></i>
@@ -58,6 +61,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">id</th>
+                                        <th scope="col">المبلغ</th>
                                         <th scope="col">التاريخ</th>
                                     </tr>
                                 </thead>
@@ -65,6 +69,7 @@
                                     @foreach($record->salaries as $salary)
                                     <tr>
                                         <th scope="row">{{$salary?->id}}</th>
+                                        <td>{{ $salary->amount }}</td>
                                         <td>{{ $salary->created_at->format('Y-m-d') }}</td>
                                     </tr>
                                     @endforeach
@@ -74,6 +79,8 @@
                             <form class="form" id="edit-form" method="POST" action="{{ route('admins.pay-salary', $record->id) }}">
                                 @csrf
                                 <h4>هل انت متاكد من عملية دفع المرتب ل {{ $record->name }} ؟</h4>
+                                <label for="amount">المبلغ</label>
+                                <input type="number" name="amount" class="form-control" placeholder="ادخل المبلغ">
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
                                     <button type="submit" class="btn btn-primary">دفع</button>
@@ -85,7 +92,7 @@
                 </div>
 
         </td>
-
+        @endif
         <td>{{ $record->created_at?->format('Y-m-d H:i:s') }}</td>
         @if (auth()->id() == 1)
         <td style="">
